@@ -2,6 +2,8 @@
 
 ## Pseudocode
 
+
+
 sumitButt.addEventListener("click", function(event) {
 		var newCity = location.value;
 		updateCityListingLocalStorage(newCity)
