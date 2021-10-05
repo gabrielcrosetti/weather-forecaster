@@ -5,24 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Weather Forecaster</title>
 </head>
 <body>
-    <nav class="navbar">
+    <header class="navbar">
         <span class="navbar-brand mb-3 h1 w-100 text-center">Weather Forecaster</span>
-    </nav>
+    </header>
         <div class ="container">
             <div class="row">
-                <div class="col-4">
-                     <p class="header-search">Search for city</p>
-                     <di class="user-input"></di>
+                <div class="sidebar col-sm-12 col-md-4">
+                     <p class="headerSearch">Search for city</p>
+                     <div class="userInput"></div>
                      <input class="cityInput" type="text" placeholder="Enter City Name"> 
                      <div class="user-input-append">
                         <button class="btn" type="button" id="searchBtn">Search</button>
                      </div>
-
+                     <div class="searchHistory"></div>
+             </div>
+             <div class="col-sm-12 col-md-8 ">
+                 <div class="forecast">
+                    <div class="row">
+                        <h1 class="cityName">City Name</h1>
+                         <h1 class="currentDate"></h1>
+                        <img class="weatherIcon"></img>
+                    </div>
+                    <div class="row">
+                        <p class="temp">Temperature:</p>
+                    </div>
+                    <div class="row">
+                         <p class="humidity">Humidity:</p>
+                    </div>
+                    <div class="row">
+                        <p class="windSpeed">Wind Speed:</p>
+                     </div>
+                    <div class="row">
+                        <p class="uvIndex">UV Index:</p>
+                     </div>
+                </div>
+                <div class="five-day">
+                    <h2>5 Day Forecast:</h2>
+                    <div class="row card-row"></div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -33,6 +61,10 @@
 
 
         </div>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 <script src="script.js"></script>
 </body>
 </html>
