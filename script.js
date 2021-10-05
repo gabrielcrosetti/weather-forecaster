@@ -10,6 +10,7 @@ var humidity = $(".humidity")
 var windSpeed = $(".windSpeed")
 var uvIndex = $(".uvIndex")
 var temp = $(".temp")
+var fiveDay = $("#fiveday")
 
 var apiKey = "90493f7588b5b1b054a4b36dd7f81338"
 
@@ -72,15 +73,48 @@ function getForecast(lat, lon) {
         .then(function (data) {
             uvIndex.text("UV Index: " + data.current.uvi)
             console.log (data)
+            var temperatures = data.daily;
             for ( var i = 0; i < 5; i++){
                 var card=$("<div class='col card'>")
                 var cardBody=$("<div class=' card-body'>")
-                var temp=$("<p>").text(data.daily[i].temp.day)
+                var temp=$("<p>").text(temperatures[i].temp.day+ " F")
+                var humidity=$("<p>").text(temperatures[i].humidity+ " %rh")
+                
+                var weather = temperatures[i].weather[0].main   
+                
+                var weatherIcon
+                
+                if (weather === "Rain"){
+                    weatherIcon= `<img src="http://openweathermap.org/img/wn/09d.png" alt="">`
+                }
 
+                if (weather=== "Clouds"){
+                    weatherIcon=`<img src="http://openweathermap.org/img/wn/03d.png"
+                    alt="">`
+                }
 
-                cardBody.append(temp)
+                if (weather=== "Clear"){
+                    weatherIcon=`<img src="http://openweathermap.org/img/wn/01d.png"
+                    alt="">`
+                }
+
+                if (weather=== "Drizzle"){
+                    weatherIcon =`<img src="http://openweathermap.org/img/wn/10d.png"
+                    alt="">`
+                }
+
+                if (weather=== "Snow"){
+                    weatherIcon =`<img src="http://openweathermap.org/img/wn/13d.png" alt="">`
+                }
+
+                console.log(weatherIcon)
+                
+
+                cardBody.append(weatherIcon,temp,humidity)
                 card.append(cardBody)
                 $(".card-row").append(card)
+
+                
             }
 
             //once we get back data for that location (lat/lon) parse data for waht the heck we need
