@@ -36,6 +36,7 @@ searchBtn.on("click", function (e) {
         alert("You must enter a city");
         return;
     }
+    // localStorage.setItem("searchHistory",cityInput.val())
     console.log("clicked button")
     getWeather(cityInput.val());
 });
@@ -109,8 +110,9 @@ function getForecast(lat, lon) {
 
                 console.log(weatherIcon)
                 
+                var dt = new Date(temperatures[i].dt*1000).toLocaleDateString("en-US")
 
-                cardBody.append(weatherIcon,temp,humidity)
+                cardBody.append(dt,weatherIcon,temp,humidity)
                 card.append(cardBody)
                 $(".card-row").append(card)
 
