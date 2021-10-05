@@ -41,6 +41,8 @@ searchBtn.on("click", function (e) {
         return;
     }
 
+    // Trying to get search history to display 
+
     // var searchValues = localStorage.getItem("searchHistory") && JSON.parse(localStorage.getItem("searchHistory")).split(",")
     // if (searchValues == null) {
     //     searchValues = [].push(e.target.value)
@@ -71,16 +73,15 @@ function getWeather(cityName) {
         .then(function (data) {
             console.log(data)
             getForecast(data.coord.lat, data.coord.lon)
-            humidity.text("Humidity: " + data.main.humidity)
+            humidity.text("Humidity: " + data.main.humidity + "%rh")
             cityNameEl.text(data.name)
-            temp.text("Temperature: " + data.main.temp)
+            temp.text("Temperature: " + data.main.temp + " F")
             windSpeed.text("Wind Speed: " + data.wind.speed + " mph")
         });
 
 }
 
 function getForecast(lat, lon) {
-    // send to get lat Lon Fun
     var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely,alerts&appid=" + apiKey + "&units=imperial"
     fetch(requestUrl)
         .then(function (response) {
@@ -94,7 +95,7 @@ function getForecast(lat, lon) {
                 var card = $("<div class='col card'>")
                 var cardBody = $("<div class=' card-body'>")
                 var temp = $("<p>").text(temperatures[i].temp.day + " F")
-                var humidity = $("<p>").text(temperatures[i].humidity + " %rh")
+                var humidity = $("<p>").text(temperatures[i].humidity + "%rh")
 
                 var weather = temperatures[i].weather[0].main
 
@@ -134,10 +135,7 @@ function getForecast(lat, lon) {
 
             }
 
-            //once we get back data for that location (lat/lon) parse data for waht the heck we need
-            //assign to variables
-            //send to a new function tht wioll dynamically create html for the page
-
+            
         });
 
 
