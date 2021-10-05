@@ -7,5 +7,16 @@
 }
 
 #searchBtn {
+    border: 1px black;
+}
+
+.card {
     
+    background-color: rgba(0, 0, 0, 0.2);
+    
+}
+
+#searchBtn {
+    color: darkblue;
+    font-weight: bold;
 }
